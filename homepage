@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buy farm</title>
+    <link rel="stylesheet" href="degine2.0.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <img src="BuyFarmWeb logo for buying rice and vegetables in a simple design.png" alt="Logo" class="logo">
+        <nav class="navbar">
+            <ul>
+                <li><a href="home page.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="list">
+                    <a href="products.html"><i class="fas fa-carrot"></i> Products</a>
+                    <div class="products-list">
+                        <a href="productsvegetables.html"><i class="fas fa-leaf"></i> Vegetables</a>
+                        <a href="productsfruits.html"><i class="fas fa-apple-alt"></i> Fruits</a>
+                        <a href="productsgrains.html"><i class="fas fa-seedling"></i> Grains</a>
+                    </div>
+                </li>
+                <li><a href="buyonline.html"><i class="fas fa-shopping-cart"></i> Buy Online</a></li>
+                <li><a href="contactus.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="loginpage.html"><i class="fas fa-user"></i> Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+        
+    <main>
+
+           
+        <div class="image-container">
+            <img src="https://imgs.search.brave.com/_unClb35n1p-JFIgvFbgSc_7lg6TQqP2ojfgvWvYILc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9jbG9zZS11cC1h/Z3JpY3VsdHVyZS1z/Y2VuZXJ5LWZpZWxk/LXdoZWF0LWZpZWxk/LWZhcm1pbmctYmFj/a2dyb3VuZF8xNzk5/MzUtNjI5ODcuanBn/P3NlbXQ9YWlzX2h5/YnJpZA" alt="Sample Image">
+            <div class="overlay-text">
+                <h2>Welcome to BuyFarmWeb!</h2>
+                <p>From our fields to your home</p>
+            </div>
+        </div>
+
+        <div class="new-content">
+            <h1>grab now</h1>
+         </div>
+
+
+        <div class="special-offers">
+
+
+            <div class="cocoa">
+                <img src="https://imgs.search.brave.com/HFU1Lj6VMcEsIH9NyvI-maUh83jGVIe2BntRJJXiSJw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTA5/MzY2NDY1L3Bob3Rv/L2NvY29hLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1iUWtO/SGVoVm01eGY2b0k3/UDk0YUFZRWJLTTZP/TFZUQXA4T1J6MGt5/MDVvPQ" alt="cocoa">
+                <h2>Cocoa</h2>
+                <p>Cost: 190/-</p>
+                <p>Weight: 100gms</p>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+                <a href="#" class="buy-now">Buy Now</a>
+            </div>
+            <div class="brownrice">
+                <img src="https://imgs.search.brave.com/669ex65iRONvwcI4RJMDskkxa1dJfXVaqR08KpzthRM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTcz/NTg5NjIwL3Bob3Rv/L2Jyb3duLXJpY2Uu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PXl2dTFXMmM1Zmox/QWE2bGItTnZXUVBY/WG1MX19RV0pxUzJr/R2xoQ2ZxMEk9" alt="brown rice">
+                <h2>Brown Rice</h2>
+                <p>Cost: 130/-</p>
+                <p>Weight: 1kg</p>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+                <a href="#" class="buy-now">Buy Now</a>
+            </div>
+
+            <div class="apples">
+                <img src="https://imgs.search.brave.com/QEZmITd1Sty2FfN1VkKArxX0DU5LDkExVsaPUzImRXI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vaW1hZ2Vz/LXByb2QuaGVhbHRo/bGluZS5jb20vaGxj/bXNyZXNvdXJjZS9p/bWFnZXMvQU5faW1h/Z2VzL2FwcGxlcy0x/Mjk2eDcyOC1mZWF0/dXJlLmpwZz93PTEx/NTUmaD0xNTI4" alt="brown rice">
+                <h2>apples</h2>
+                <p>Cost: 90/-</p>
+                <p>Weight: 1kg</p>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+                <a href="#" class="buy-now">Buy Now</a>
+            </div>
+
+            <div class="brownrice">
+                <img src="https://imgs.search.brave.com/PAqZjwkw-_hP7LqRobsDoDCu7HP4z0RKn69987nSt8Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzEyLzYwLzQ2/LzM2MF9GXzIxMjYw/NDYwMV9aSzAyTTBY/RmM4YXJsdzlTYW5n/WVlaNmlPaDU3cGJz/Ri5qcGc" alt="brown rice">
+                <h2>basmathi </h2>
+                <p>Cost: 70/-</p>
+                <p>Weight: 1kg</p>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+                <a href="#" class="buy-now">Buy Now</a>
+            </div>
+
+
+        </div>
+
+        <h1>hi how are your</h1>
+
+
+
+
+
+
+    </main>
+    
+    
+    
+    
+    <footer>
+        <p>&copy; 2024 Farmers' Market</p>
+        <a href="activitycontact.html" class="contact-link">Contact Us</a>
+    </footer>

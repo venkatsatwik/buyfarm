@@ -1,0 +1,213 @@
+body {
+    font-family: cursive;
+    padding: 0;
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 9%;
+    background-color: white;
+    box-shadow: 0 5px 10px rgb(58, 57, 57);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo {
+    width: 100px;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    display: inline-block;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: all 0.2s linear;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li a i {
+    margin-right: 5px;
+}
+
+.navbar ul li a:hover {
+    background-color: green;
+    color: #fff;
+}
+
+.products-list {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 5px 10px black;
+    border-radius: 5px;
+}
+
+.products-list a {
+    color: gray;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+}
+
+.products-list a:hover {
+    background-color: #ddd;
+}
+
+.list:hover .products-list {
+    display: block;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.contact-link {
+    background-color: #F2FFEE;
+    color: black;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-weight: 100;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.image-container {
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.overlay-text h2 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.overlay-text p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.iconsbars {
+    border: black solid 2px;
+    height: 50px;
+    width: 50px;
+    line-height: 3rem;
+    border-radius: 5px;
+    background: #eee;
+    color: black;
+    font-size: 1rem;
+    margin-right: .3rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.iconsbars {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
+.special-offers {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+   
+}
+
+.special-offers .cocoa, .special-offers .brownrice , .special-offers .apples {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px black;
+    text-align: center;
+    margin: 10px;
+}
+
+.special-offers img {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.special-offers .add-to-cart, .special-offers .buy-now {
+    margin: 10px;
+    text-decoration: none;
+    border: solid black;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    padding: 8px;
+    box-shadow: 1px 5px 5px gray;
+    border-width: 2px;
+    display: inline-block;
+}
+
+
+.new-content{text-align: center; border: 2px solid rgb(61, 54, 54); margin-top: 20px; background-color: #F2FFEE; color: #0f0e0e;margin-left: 3px; margin-right: 3px; box-shadow: #000000 2px 5px 10px; border-radius: 10px;}

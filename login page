@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buy farm</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <img src="BuyFarmWeb logo for buying rice and vegetables in a simple design.png" alt="Logo" class="logo">
+        <nav class="navbar">
+            <ul>
+                <li><a href="home page.html"><i class="fas fa-home"></i> Home</a></li>
+                <li class="list">
+                    <a href="products.html"><i class="fas fa-carrot"></i> Products</a>
+                    <div class="products-list">
+                        <a href="productsvegetables.html"><i class="fas fa-leaf"></i> Vegetables</a>
+                        <a href="productsfruits.html"><i class="fas fa-apple-alt"></i> Fruits</a>
+                        <a href="productsgrains.html"><i class="fas fa-seedling"></i> Grains</a>
+                    </div>
+                </li>
+                <li><a href="buyonline.html"><i class="fas fa-shopping-cart"></i> Buy Online</a></li>
+                <li><a href="contactus.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="loginpage.html"><i class="fas fa-user"></i> Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+      
+    <div class="imgbackground"> <img src=" https://imgs.search.brave.com/6bRLmsLjBFWnP_8eOaRLsGxoadKdN8CpBznRQQGMYl0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTgw/NTg0OTg2MS9waG90/by9oYXJ2ZXN0aW5n/LWluLWFncmljdWx0/dXJlLWNyb3AtZmll/bGQuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPUdNV2FaRkVn/OHpHRmthY1F0ZVRF/ZzdiVkN0cXJUeXJs/aTRTZmdZeHhZV2c9" alt="Sample Image" class="blur-image">
+    </div>
+    
+    <main>
+        <div class="container" id="container">
+            <div class="form sign-in">
+                <form>
+                    <h1>Sign In</h1>
+                    <span>or use your email password</span>
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                    <a href="#">Forget Your Password?</a>
+                    <button>Sign In</button>
+                </form>
+            </div>
+            <div class="black">
+                <div class="blackpart">
+                    <div class="written">
+                        <h1>HELLO THERE  !</h1>
+                        <p>enter your login info</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+   
+    <style>
+
+body {align-items: center;
+    font-family: cursive;
+    padding: 0;
+    background: #eee;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 9%;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgb(58, 57, 57);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.logo {
+    width: 100px;
+}
+
+.navbar {
+    display: flex;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    display: inline-block;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    transition: all 0.2s linear;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul li a i {
+    margin-right: 5px;
+}
+
+.navbar ul li a:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.list:hover .products-list {
+    display: block;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.products-list {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.products-list a {
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+}
+
+.imgbackground {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 20px;
+    position: fixed;
+}
+
+.blur-image {
+    width: 100%;
+    height: 100%;
+    filter: blur(8px); 
+    margin: 0%;
+}
+
+
+form{
+    box-sizing: border-box;
+    font-family:sans-serif
+}
+
+
+
+.container{
+    top: 300px;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+}
+
+.container p{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing:1px;
+    margin: 20px;
+}
+
+.container span{
+    font-size: 12px;
+}
+
+.container a{
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 15px  10px;
+}
+
+.container button{
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    font-size: 12px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.container form{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    height: 100%;
+}
+
+.container input{
+    background-color: #eee;
+    border: rgba(0, 0, 0, 0.635) solid 2px;
+    margin: 8px ;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.form{
+    position: absolute;
+    height: 100%;
+}
+
+.sign-in{
+    width: 50%;
+}
+
+.black{
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 150px 0 0 100px;
+}
+
+.blackpart{
+    background-color: rgb(41, 54, 43);
+    height: 100%;
+    color: #fff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+}
+
+.written{
+    right: 0;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 30px;
+    text-align: center;
+    font-family:cursive;
+}
+
+
+    </style>
+</body>
+</html>

@@ -1,15 +1,35 @@
 # BuyFarm
 
-BuyFarm is an early static HTML/CSS prototype for a farm-products storefront. It includes product pages, contact and order forms, and image assets.
+BuyFarm is a simple farm-products storefront prototype that has been reorganized into a cleaner structure so it is easier to maintain and extend.
 
-## Project status
+## Project purpose
 
-This repository is a front-end prototype, not a production e-commerce system. The forms and payment-related pages do not provide secure order processing or payment handling. Do not enter real personal or payment information.
+This project was originally built as a learning website for a farm products shop. It includes a landing page, product list, order form, and contact section.
 
-## Current structure
+## Organized structure
 
-The project currently contains standalone HTML pages, styles, and image assets in the repository root. Several filenames and page references do not appear to match (for example, links use names such as `home page.html` and `loginpage.html`, while similarly named files are extensionless). The stylesheet referenced by the pages also needs to be reconciled with the current file names. These should be corrected together before moving files into folders, so internal links and stylesheets are not broken.
+```text
+.
+├── index.html
+├── README.md
+├── assets/
+│   └── logo.svg
+├── css/
+│   └── style.css
+├── pages/
+│   ├── products.html
+│   ├── order.html
+│   └── contact.html
+└── legacy/
+    └── notes.txt
+```
 
-## Suggested next organization
+## Run locally
 
-Once page links and stylesheet references are mapped and tested, group files into `pages/`, `css/`, and `assets/`. Keep a redirect or update every relative link when moving files.
+Open `index.html` in a browser.
+
+## Notes
+
+- This project is still a front-end prototype.
+- It does not include real payment processing or a backend database.
+- It is intended for demo and learning purposes.

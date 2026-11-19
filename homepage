@@ -1,104 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>buy farm</title>
-    <link rel="stylesheet" href="degine2.0.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuyFarm | Home</title>
+  <link rel="stylesheet" href="css/buyfarm.css">
 </head>
 <body>
-    <header class="header">
-        <img src="BuyFarmWeb logo for buying rice and vegetables in a simple design.png" alt="Logo" class="logo">
-        <nav class="navbar">
-            <ul>
-                <li><a href="home page.html"><i class="fas fa-home"></i> Home</a></li>
-                <li class="list">
-                    <a href="products.html"><i class="fas fa-carrot"></i> Products</a>
-                    <div class="products-list">
-                        <a href="productsvegetables.html"><i class="fas fa-leaf"></i> Vegetables</a>
-                        <a href="productsfruits.html"><i class="fas fa-apple-alt"></i> Fruits</a>
-                        <a href="productsgrains.html"><i class="fas fa-seedling"></i> Grains</a>
-                    </div>
-                </li>
-                <li><a href="buyonline.html"><i class="fas fa-shopping-cart"></i> Buy Online</a></li>
-                <li><a href="contactus.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
-                <li><a href="loginpage.html"><i class="fas fa-user"></i> Profile</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-
-
-        <div class="image-container">
-            <img src="https://imgs.search.brave.com/_unClb35n1p-JFIgvFbgSc_7lg6TQqP2ojfgvWvYILc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9jbG9zZS11cC1h/Z3JpY3VsdHVyZS1z/Y2VuZXJ5LWZpZWxk/LXdoZWF0LWZpZWxk/LWZhcm1pbmctYmFj/a2dyb3VuZF8xNzk5/MzUtNjI5ODcuanBn/P3NlbXQ9YWlzX2h5/YnJpZA" alt="Sample Image">
-            <div class="overlay-text">
-                <h2>Welcome to BuyFarmWeb!</h2>
-                <p>From our fields to your home</p>
-            </div>
-        </div>
-
-        <div class="new-content">
-            <h1>grab now</h1>
-         </div>
-
-
-        <div class="special-offers">
-
-
-            <div class="cocoa">
-                <img src="https://imgs.search.brave.com/HFU1Lj6VMcEsIH9NyvI-maUh83jGVIe2BntRJJXiSJw/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTA5/MzY2NDY1L3Bob3Rv/L2NvY29hLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz1iUWtO/SGVoVm01eGY2b0k3/UDk0YUFZRWJLTTZP/TFZUQXA4T1J6MGt5/MDVvPQ" alt="cocoa">
-                <h2>Cocoa</h2>
-                <p>Cost: 190/-</p>
-                <p>Weight: 100gms</p>
-                <a href="#" class="add-to-cart">Add to Cart</a>
-                <a href="#" class="buy-now">Buy Now</a>
-            </div>
-            <div class="brownrice">
-                <img src="https://imgs.search.brave.com/669ex65iRONvwcI4RJMDskkxa1dJfXVaqR08KpzthRM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTcz/NTg5NjIwL3Bob3Rv/L2Jyb3duLXJpY2Uu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PXl2dTFXMmM1Zmox/QWE2bGItTnZXUVBY/WG1MX19RV0pxUzJr/R2xoQ2ZxMEk9" alt="brown rice">
-                <h2>Brown Rice</h2>
-                <p>Cost: 130/-</p>
-                <p>Weight: 1kg</p>
-                <a href="#" class="add-to-cart">Add to Cart</a>
-                <a href="#" class="buy-now">Buy Now</a>
-            </div>
-
-            <div class="apples">
-                <img src="https://imgs.search.brave.com/QEZmITd1Sty2FfN1VkKArxX0DU5LDkExVsaPUzImRXI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pMC53/cC5jb20vaW1hZ2Vz/LXByb2QuaGVhbHRo/bGluZS5jb20vaGxj/bXNyZXNvdXJjZS9p/bWFnZXMvQU5faW1h/Z2VzL2FwcGxlcy0x/Mjk2eDcyOC1mZWF0/dXJlLmpwZz93PTEx/NTUmaD0xNTI4" alt="brown rice">
-                <h2>apples</h2>
-                <p>Cost: 90/-</p>
-                <p>Weight: 1kg</p>
-                <a href="#" class="add-to-cart">Add to Cart</a>
-                <a href="#" class="buy-now">Buy Now</a>
-            </div>
-
-            <div class="brownrice">
-                <img src="https://imgs.search.brave.com/PAqZjwkw-_hP7LqRobsDoDCu7HP4z0RKn69987nSt8Q/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzAyLzEyLzYwLzQ2/LzM2MF9GXzIxMjYw/NDYwMV9aSzAyTTBY/RmM4YXJsdzlTYW5n/WVlaNmlPaDU3cGJz/Ri5qcGc" alt="brown rice">
-                <h2>basmathi </h2>
-                <p>Cost: 70/-</p>
-                <p>Weight: 1kg</p>
-                <a href="#" class="add-to-cart">Add to Cart</a>
-                <a href="#" class="buy-now">Buy Now</a>
-            </div>
-
-
-        </div>
-
-        <h1>hi how are your</h1>
-
-
-
-
-
-
-    </main>
-
-
-
-
-    <footer>
-        <p>&copy; 2024 Farmers' Market</p>
-        <a href="activitycontact.html" class="contact-link">Contact Us</a>
-    </footer>
-    <script src="app.js"></script>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt="BuyFarm"><span>BuyFarm</span></a>
+      <nav class="main-nav"><a class="active" href="index.html">Home</a><a href="products.html">Products</a><a href="buyonline.html">Order</a><a href="contactus.html">Contact</a></nav>
+      <div class="nav-actions"><button class="nav-button" id="cartButton" type="button">Cart <span class="count" id="cartCount">0</span></button><a class="nav-button primary" href="login page">Sign in</a></div>
+    </div>
+  </header>
+  <main>
+    <section class="hero"><div class="container hero-grid"><div><span class="eyebrow">Harvested locally</span><h1>Fresh from the farm,<br>delivered to you.</h1><p>Seasonal vegetables, fruits, grains and pantry essentials from trusted local farms.</p><div class="hero-actions"><a class="button primary" href="products.html">Shop fresh</a><a class="button secondary" href="buyonline.html">Place an order</a></div></div><div class="hero-art" aria-hidden="true"><div class="basket"><div class="produce one"></div><div class="produce two"></div><div class="produce three"></div></div></div></div></section>
+    <section class="container trust-strip"><article><strong>100% fresh</strong><span>Peak quality produce</span></article><article><strong>Local farms</strong><span>Direct from growers</span></article><article><strong>Fast delivery</strong><span>24-48 hour delivery</span></article><article><strong>Secure checkout</strong><span>Simple ordering</span></article></section>
+    <section class="container section"><div class="section-heading"><div><span class="eyebrow">Popular this week</span><h2>Farm favorites</h2></div><a class="text-link" href="products.html">View all products →</a></div><div class="product-grid" id="featuredProducts"></div></section>
+  </main>
+  <aside class="drawer-backdrop" id="cartBackdrop" hidden><div class="drawer"><div class="drawer-header"><h2>Your cart</h2><button class="close-button" type="button" data-close-cart>×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-footer"><div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div><button class="button primary full" id="checkoutButton" type="button">Continue to checkout</button></div></div></aside>
+  <div id="buyfarm-toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

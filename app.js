@@ -1,195 +1,188 @@
 (() => {
   "use strict";
 
-  const keys = {
-    cart: "buyfarm_cart",
-    session: "buyfarm_session",
-    delivery: "buyfarm_delivery",
-    orders: "buyfarm_orders"
-  };
+  const products = [
+    {id:1,name:"Cocoa",category:"Grains",price:190,unit:"100 g",color:"#6c3d29"},
+    {id:2,name:"Brown Rice",category:"Grains",price:130,unit:"1 kg",color:"#9f8357"},
+    {id:3,name:"Red Apples",category:"Fruits",price:90,unit:"1 kg",color:"#c84d43"},
+    {id:4,name:"Basmati Rice",category:"Grains",price:70,unit:"1 kg",color:"#b99b66"},
+    {id:5,name:"Corn",category:"Vegetables",price:50,unit:"1 kg",color:"#dcb84b"},
+    {id:6,name:"Oats",category:"Grains",price:170,unit:"1 kg",color:"#a88d68"},
+    {id:7,name:"Soy Beans",category:"Grains",price:40,unit:"1 kg",color:"#dad0ad"},
+    {id:8,name:"Quinoa",category:"Grains",price:170,unit:"1 kg",color:"#c7b78f"},
+    {id:9,name:"Oranges",category:"Fruits",price:85,unit:"1 kg",color:"#e48b38"},
+    {id:10,name:"Bananas",category:"Fruits",price:127,unit:"1 kg",color:"#dcb84b"},
+    {id:11,name:"Strawberries",category:"Fruits",price:19,unit:"100 g",color:"#c94b45"},
+    {id:12,name:"Blueberries",category:"Fruits",price:490,unit:"150 g",color:"#4d5f96"},
+    {id:13,name:"Tomatoes",category:"Vegetables",price:45,unit:"1 kg",color:"#d85b43"},
+    {id:14,name:"Potatoes",category:"Vegetables",price:127,unit:"1 kg",color:"#c79a63"},
+    {id:15,name:"Carrots",category:"Vegetables",price:78,unit:"1 kg",color:"#e58a3b"},
+    {id:16,name:"Onions",category:"Vegetables",price:55,unit:"1 kg",color:"#b87362"},
+    {id:17,name:"Cabbage",category:"Vegetables",price:12,unit:"1 kg",color:"#91b86a"},
+    {id:18,name:"Broccoli",category:"Vegetables",price:55,unit:"1 kg",color:"#4f8054"},
+    {id:19,name:"Spinach",category:"Vegetables",price:24,unit:"1 kg",color:"#4a7d4e"},
+    {id:20,name:"Cucumbers",category:"Vegetables",price:32,unit:"1 kg",color:"#78a66c"}
+  ];
 
-  const read = (key, fallback) => {
-    try {
-      const value = localStorage.getItem(key);
-      return value ? JSON.parse(value) : fallback;
-    } catch {
-      return fallback;
-    }
-  };
-
-  const write = (key, value) => localStorage.setItem(key, JSON.stringify(value));
-  const cart = () => read(keys.cart, []);
-  const saveCart = value => write(keys.cart, value);
-  const rupees = value => `₹${Number(value).toLocaleString("en-IN")}`;
+  const keys={cart:"buyfarm_cart",session:"buyfarm_session",delivery:"buyfarm_delivery",orders:"buyfarm_orders"};
+  const read=(key,fallback)=>{try{const value=localStorage.getItem(key);return value?JSON.parse(value):fallback;}catch{return fallback;}};
+  const write=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
+  const cart=()=>read(keys.cart,[]);
+  const saveCart=value=>write(keys.cart,value);
+  const money=value=>`₹${Number(value).toLocaleString("en-IN")}`;
 
   let toastTimer;
-  const showToast = message => {
-    let toast = document.getElementById("buyfarm-toast");
-    if (!toast) {
-      toast = document.createElement("div");
-      toast.id = "buyfarm-toast";
-      toast.setAttribute("role", "status");
-      toast.style.cssText =
-        "position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;" +
-        "background:#1d2b1d;color:#fff;padding:12px 18px;border-radius:8px;" +
-        "box-shadow:0 8px 24px rgba(0,0,0,.22);font-family:Arial,sans-serif";
-      document.body.appendChild(toast);
-    }
-    toast.textContent = message;
-    toast.style.display = "block";
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => { toast.style.display = "none"; }, 2600);
+  const toast=message=>{
+    let element=document.getElementById("buyfarm-toast");
+    if(!element){element=document.createElement("div");element.id="buyfarm-toast";element.className="toast";element.setAttribute("role","status");document.body.appendChild(element);}
+    element.textContent=message;element.classList.add("show");
+    clearTimeout(toastTimer);toastTimer=setTimeout(()=>element.classList.remove("show"),2400);
   };
 
-  const normalizeLinks = () => {
-    const targets = {
-      "home page.html": "index.html",
-      "loginpage.html": "login page",
-      "activitycontact.html": "contactus.html",
-      "pages/products.html": "products.html",
-      "pages/order.html": "buyonline.html",
-      "pages/contact.html": "contactus.html"
-    };
-
-    document.querySelectorAll("a[href]").forEach(link => {
-      const href = link.getAttribute("href");
-      if (targets[href]) link.setAttribute("href", targets[href]);
-    });
-  };
-  normalizeLinks();
-
-  document.addEventListener("click", event => {
-    const action = event.target.closest(".add-to-cart, .buy-now");
-    if (!action) return;
-    event.preventDefault();
-
-    const card = action.closest(".cocoa, .brownrice, .apples");
-    const name = card?.querySelector("h2")?.textContent.trim();
-    const priceText = card?.querySelector("p")?.textContent || "";
-    const price = Number(priceText.match(/(\d+)/)?.[1] || 0);
-    if (!name || !price) return;
-
-    const items = cart();
-    const existing = items.find(item => item.name === name);
-    if (existing) existing.quantity += 1;
-    else items.push({ name, price, quantity: 1 });
-    saveCart(items);
-    showToast(action.classList.contains("buy-now")
-      ? `${name} added. Continue to delivery.`
-      : `${name} added to cart.`);
-
-    if (action.classList.contains("buy-now")) {
-      window.location.href = "buyonline.html";
-    }
+  document.querySelectorAll("a[href]").forEach(link=>{
+    const href=link.getAttribute("href");
+    if(href==="home page.html")link.setAttribute("href","index.html");
+    if(href==="loginpage.html")link.setAttribute("href","login page");
   });
 
-  const deliveryForm = document.getElementById("delivery-form");
-  if (deliveryForm) {
-    deliveryForm.addEventListener("submit", event => {
-      event.preventDefault();
+  const renderProducts=(targetId,items)=>{
+    const target=document.getElementById(targetId);
+    if(!target)return;
+    target.innerHTML=items.map(product=>`
+      <article class="product-card" data-category="${product.category}">
+        <div class="product-visual"><div class="product-dot" style="background:${product.color}" aria-hidden="true"></div></div>
+        <div class="product-info">
+          <span class="product-category">${product.category} · ${product.unit}</span>
+          <h3>${product.name}</h3>
+          <div class="product-row"><strong class="price">${money(product.price)}</strong>
+            <button type="button" class="add-button" data-add="${product.id}" aria-label="Add ${product.name} to cart">+</button>
+          </div>
+        </div>
+      </article>`).join("");
+  };
+  renderProducts("featuredProducts",products.slice(0,4));
+  renderProducts("shopProducts",products);
 
-      const fields = deliveryForm.querySelectorAll("#phonenum");
-      const delivery = {
-        name: deliveryForm.querySelector("#name")?.value.trim(),
-        mobile: deliveryForm.querySelector("#mobilenumber")?.value.trim(),
-        email: deliveryForm.querySelector("#email")?.value.trim(),
-        address: fields[0]?.value.trim(),
-        area: fields[1]?.value.trim(),
-        pincode: fields[2]?.value.trim(),
-        products: fields[3]?.value.trim(),
-        instructions: deliveryForm.querySelector("#comment")?.value.trim()
-      };
+  const categoryGrid=document.getElementById("categoryProducts");
+  if(categoryGrid)renderProducts("categoryProducts",products.filter(product=>product.category===categoryGrid.dataset.category));
 
-      if (!delivery.name || !delivery.mobile || !delivery.email || !delivery.address || !delivery.pincode) {
-        showToast("Please complete the required delivery details.");
-        return;
-      }
-      if (!/^\d{10}$/.test(delivery.mobile)) {
-        showToast("Enter a valid 10-digit mobile number.");
-        return;
-      }
-      if (!/^\d{6}$/.test(delivery.pincode)) {
-        showToast("Enter a valid 6-digit pincode.");
-        return;
-      }
-
-      write(keys.delivery, delivery);
-      window.location.href = "payment.html";
+  const search=document.getElementById("searchInput");
+  if(search){
+    search.addEventListener("input",()=>{
+      const query=search.value.trim().toLowerCase();
+      const category=document.querySelector(".filter.active")?.dataset.category||"All";
+      const filtered=products.filter(product=>(category==="All"||product.category===category)&&`${product.name} ${product.category}`.toLowerCase().includes(query));
+      renderProducts("shopProducts",filtered);
     });
   }
 
-  const loginForm = document.getElementById("login-form");
-  if (loginForm) {
-    loginForm.addEventListener("submit", event => {
-      event.preventDefault();
-      const email = loginForm.querySelector('input[type="email"]')?.value.trim();
-      const password = loginForm.querySelector('input[type="password"]')?.value || "";
-
-      if (!email || !password) {
-        showToast("Enter your email and password.");
-        return;
-      }
-      if (password.length < 6) {
-        showToast("Password must contain at least 6 characters.");
-        return;
-      }
-
-      write(keys.session, { email, signedInAt: new Date().toISOString() });
-      showToast("Signed in successfully.");
+  document.querySelectorAll(".filter").forEach(filter=>{
+    filter.addEventListener("click",()=>{
+      document.querySelectorAll(".filter").forEach(button=>button.classList.remove("active"));
+      filter.classList.add("active");
+      const category=filter.dataset.category;
+      const filtered=category==="All"?products:products.filter(product=>product.category===category);
+      renderProducts("shopProducts",filtered);
     });
-  }
+  });
 
-  const forgotPassword = loginForm?.querySelector('a[href="#"]');
-  if (forgotPassword) {
-    forgotPassword.addEventListener("click", event => {
-      event.preventDefault();
-      const email = loginForm.querySelector('input[type="email"]')?.value.trim();
-      if (!email) {
-        showToast("Enter your email to reset the password.");
-        return;
-      }
-      showToast("Password reset instructions would be sent to your email.");
-    });
-  }
-
-  const makePayment = document.getElementById("make-payment");
-  if (makePayment) {
-    makePayment.addEventListener("click", event => {
-      event.preventDefault();
-      const selected = document.querySelector('input[name="payment"]:checked');
-      if (!selected) {
-        showToast("Please select a payment method.");
-        return;
-      }
-
-      const method = selected.parentElement?.querySelector("h4")?.textContent.trim() || "Payment";
-      const orderId = `BF-${Math.floor(100000 + Math.random() * 900000)}`;
-      const orders = read(keys.orders, []);
-      const items = cart();
-
-      orders.push({
-        id: orderId,
-        method,
-        status: "Confirmed",
-        date: new Date().toISOString(),
-        delivery: read(keys.delivery, null),
-        items
-      });
-
-      write(keys.orders, orders);
-      saveCart([]);
-      window.location.href =
-        `payend.html?order=${encodeURIComponent(orderId)}&method=${encodeURIComponent(method)}`;
-    });
-  }
-
-  if (window.location.pathname.endsWith("payend.html")) {
-    const params = new URLSearchParams(window.location.search);
-    const orderId = params.get("order");
-    const heading = document.querySelector("h3");
-    if (orderId && heading) {
-      heading.textContent = `Order ${orderId} confirmed`;
-      showToast("Payment completed successfully.");
+  document.addEventListener("click",event=>{
+    const add=event.target.closest("[data-add]");
+    if(add){
+      const product=products.find(item=>item.id===Number(add.dataset.add));
+      if(!product)return;
+      const items=cart();
+      const existing=items.find(item=>item.id===product.id||item.name===product.name);
+      if(existing){Object.assign(existing,product,{quantity:(existing.quantity||1)+1});}else items.push({...product,quantity:1});
+      saveCart(items);renderCart();toast(`${product.name} added to cart`);
     }
+    const quantity=event.target.closest("[data-quantity]");
+    if(quantity){
+      const id=Number(quantity.dataset.id);
+      const items=cart();
+      const item=items.find(entry=>entry.id===id);
+      if(!item)return;
+      item.quantity+=Number(quantity.dataset.quantity);
+      const updated=item.quantity>0?items:items.filter(entry=>entry.id!==id);
+      saveCart(updated);renderCart();
+    }
+    if(event.target.closest("#cartButton"))document.getElementById("cartBackdrop").hidden=false;
+  });
+
+  const renderCart=()=>{
+    const items=cart();
+    const countElement=document.getElementById("cartCount");
+    if(countElement)countElement.textContent=items.reduce((sum,item)=>sum+item.quantity,0);
+    const target=document.getElementById("cartItems");
+    if(target){
+      target.innerHTML=items.length?items.map(item=>`
+        <article class="cart-item">
+          <div class="cart-thumb" style="background:${item.color}">×</div>
+          <div><h3>${item.name}</h3><strong>${money(item.price)}</strong></div>
+          <div class="quantity">
+            <button type="button" data-quantity="-1" data-id="${item.id}" aria-label="Decrease ${item.name} quantity">−</button>
+            <span>${item.quantity}</span>
+            <button type="button" data-quantity="1" data-id="${item.id}" aria-label="Increase ${item.name} quantity">+</button>
+          </div>
+        </article>`).join(""):'<p class="empty-cart">Your cart is empty.</p>';
+    }
+    const total=document.getElementById("cartTotal");
+    if(total)total.textContent=money(items.reduce((sum,item)=>sum+item.price*item.quantity,0));
+  };
+  renderCart();
+
+  const backdrop=document.getElementById("cartBackdrop");
+  if(backdrop)backdrop.addEventListener("click",event=>{if(event.target===backdrop)backdrop.hidden=true;});
+  document.querySelectorAll("[data-close-cart]").forEach(button=>button.addEventListener("click",()=>{document.getElementById("cartBackdrop").hidden=true;}));
+
+  const checkout=document.getElementById("checkoutButton");
+  if(checkout)checkout.addEventListener("click",()=>{
+    if(!cart().length){toast("Add a product to your cart first");return;}
+    document.getElementById("cartBackdrop").hidden=true;
+    window.location.href="buyonline.html";
+  });
+
+  const deliveryForm=document.getElementById("deliveryForm");
+  if(deliveryForm)deliveryForm.addEventListener("submit",event=>{
+    event.preventDefault();
+    const data=new FormData(deliveryForm);
+    const delivery={name:String(data.get("name")||"").trim(),phone:String(data.get("phone")||"").trim(),address:String(data.get("address")||"").trim(),pincode:String(data.get("pincode")||"").trim()};
+    if(!delivery.name||!/^\d{10}$/.test(delivery.phone)||delivery.address.length<5||!/^\d{6}$/.test(delivery.pincode)){toast("Complete valid delivery details");return;}
+    write(keys.delivery,delivery);window.location.href="payment.html";
+  });
+
+  const loginForm=document.getElementById("loginForm");
+  if(loginForm)loginForm.addEventListener("submit",event=>{
+    event.preventDefault();
+    const data=new FormData(loginForm);
+    const email=String(data.get("email")||"").trim();
+    const password=String(data.get("password")||"");
+    if(!email||password.length<6){toast("Enter a valid email and 6-character password");return;}
+    write(keys.session,{email,signedInAt:new Date().toISOString()});toast("Signed in successfully");
+  });
+
+  const paymentForm=document.getElementById("paymentForm");
+  if(paymentForm)paymentForm.addEventListener("submit",event=>{
+    event.preventDefault();
+    const data=new FormData(paymentForm);
+    const method=String(data.get("payment")||"");
+    if(!method){toast("Select a payment method");return;}
+    const orderId=`BF-${Math.floor(100000+Math.random()*900000)}`;
+    const orders=read(keys.orders,[]);
+    orders.push({id:orderId,method,status:"Confirmed",date:new Date().toISOString(),delivery:read(keys.delivery,null),items:cart()});
+    write(keys.orders,orders);saveCart([]);
+    window.location.href=`payend.html?order=${encodeURIComponent(orderId)}&method=${encodeURIComponent(method)}`;
+  });
+
+  const ordersTarget=document.getElementById("ordersList");
+  if(ordersTarget){
+    const orders=read(keys.orders,[]);
+    ordersTarget.innerHTML=orders.length?orders.slice().reverse().map(order=>`<article class="order-card"><div><strong>${order.id}</strong><p>${order.items.length} item(s) · ${order.date.slice(0,10)}</p></div><span class="order-status">${order.status}</span></article>`).join(""):'<div class="empty-state">No orders yet. Browse the shop to place an order.</div>';
+  }
+
+  if(window.location.pathname.endsWith("payend.html")){
+    const params=new URLSearchParams(window.location.search);
+    const heading=document.getElementById("confirmedOrder");
+    if(heading&&params.get("order"))heading.textContent=`Order ${params.get("order")} confirmed`;
   }
 })();

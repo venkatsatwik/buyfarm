@@ -1,46 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gentle Background Example</title>
-    <link rel="stylesheet" href="degine2.0.css">
-</head>
-
-<header class="header">
-    <img src="BuyFarmWeb logo for buying rice and vegetables in a simple design.png" alt="Logo" class="logo">
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li class="list">
-                <a href="products.html"><i class="fas fa-carrot"></i> Products</a>
-                <div class="products-list">
-                    <a href="productsvegetables.html"><i class="fas fa-leaf"></i> Vegetables</a>
-                    <a href="productsfruits.html"><i class="fas fa-apple-alt"></i> Fruits</a>
-                    <a href="productsgrains.html"><i class="fas fa-seedling"></i> Grains</a>
-                </div>
-            </li>
-            <li><a href="buyonline.html"><i class="fas fa-shopping-cart"></i> Buy Online</a></li>
-            <li><a href="contactus.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
-            <li><a href="login page"><i class="fas fa-user"></i> Profile</a></li>
-        </ul>
-    </nav>
-</header>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BuyFarm | Contact</title><link rel="stylesheet" href="css/buyfarm.css"></head>
 <body>
- <h1>contact us</h1>
-
- <a href="mailto:satwikjonnalagadda0@gmail.com">mail us</a>
-
- <h2>call us: 9906284641</h2>
- <script src="app.js"></script>
-
-</body>
-
-<style>
-  h1{margin-top: 50px;text-align: center;}
-  h2{text-align: center;}
-
-  body a{text-align: center; text-decoration: none; color: black; font-size: larger; }
-</style>
-</html>
-
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html"><img src="assets/logo.svg" alt="BuyFarm"><span>BuyFarm</span></a><nav class="main-nav"><a href="index.html">Home</a><a href="products.html">Products</a><a href="buyonline.html">Order</a><a class="active" href="contactus.html">Contact</a></nav><div class="nav-actions"><button class="nav-button" id="cartButton" type="button">Cart <span class="count" id="cartCount">0</span></button><a class="nav-button primary" href="login page">Sign in</a></div></div></header>
+<main class="container"><section class="page-heading"><span class="eyebrow">Get in touch</span><h1 class="page-title">Contact BuyFarm</h1></section><div class="form-card"><label>Name<input type="text" name="name" placeholder="Your name"></label><label>Email<input type="email" name="email" placeholder="you@example.com"></label><label>Message<textarea rows="5" placeholder="How can we help?"></textarea></label><button class="button primary" type="button" onclick="alert('Thank you! Your message has been received.')">Send message</button><p><strong>Email:</strong> <a href="mailto:satwikjonnalagadda0@gmail.com">satwikjonnalagadda0@gmail.com</a></p><p><strong>Phone:</strong> 9906284641</p></div></main>
+<aside class="drawer-backdrop" id="cartBackdrop" hidden><div class="drawer"><div class="drawer-header"><h2>Your cart</h2><button class="close-button" type="button" data-close-cart>×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-footer"><div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div><button class="button primary full" id="checkoutButton" type="button">Continue to checkout</button></div></div></aside>
+<div id="buyfarm-toast" class="toast" role="status"></div><script src="app.js"></script></body></html>

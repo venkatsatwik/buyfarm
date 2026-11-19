@@ -31,5 +31,6 @@ Open `index.html` in a browser.
 ## Notes
 
 - This project is still a front-end prototype.
-- It does not include real payment processing or a backend database.
+- Browser functions include cart storage, login session storage, delivery validation, payment selection, and order confirmation.
+- It does not include real authentication or payment processing and does not use a backend database.
 - It is intended for demo and learning purposes.

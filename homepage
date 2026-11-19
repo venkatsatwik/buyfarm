@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>buy farm</title>
-    <link rel="stylesheet" href="degine2.0.css">
+    <link rel="stylesheet" href="css part">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -27,10 +27,10 @@
             </ul>
         </nav>
     </header>
-        
+
     <main>
 
-           
+
         <div class="image-container">
             <img src="https://imgs.search.brave.com/_unClb35n1p-JFIgvFbgSc_7lg6TQqP2ojfgvWvYILc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9jbG9zZS11cC1h/Z3JpY3VsdHVyZS1z/Y2VuZXJ5LWZpZWxk/LXdoZWF0LWZpZWxk/LWZhcm1pbmctYmFj/a2dyb3VuZF8xNzk5/MzUtNjI5ODcuanBn/P3NlbXQ9YWlzX2h5/YnJpZA" alt="Sample Image">
             <div class="overlay-text">
@@ -93,11 +93,12 @@
 
 
     </main>
-    
-    
-    
-    
+
+
+
+
     <footer>
         <p>&copy; 2024 Farmers' Market</p>
         <a href="activitycontact.html" class="contact-link">Contact Us</a>
     </footer>
+    <script src="app.js"></script>

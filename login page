@@ -26,14 +26,14 @@
             </ul>
         </nav>
     </header>
-      
+
     <div class="imgbackground"> <img src=" https://imgs.search.brave.com/6bRLmsLjBFWnP_8eOaRLsGxoadKdN8CpBznRQQGMYl0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTgw/NTg0OTg2MS9waG90/by9oYXJ2ZXN0aW5n/LWluLWFncmljdWx0/dXJlLWNyb3AtZmll/bGQuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPUdNV2FaRkVn/OHpHRmthY1F0ZVRF/ZzdiVkN0cXJUeXJs/aTRTZmdZeHhZV2c9" alt="Sample Image" class="blur-image">
     </div>
-    
+
     <main>
         <div class="container" id="container">
             <div class="form sign-in">
-                <form>
+                <form id="login-form">
                     <h1>Sign In</h1>
                     <span>or use your email password</span>
                     <input type="email" placeholder="Email">
@@ -56,7 +56,7 @@
 
 
 
-   
+
     <style>
 
 body {align-items: center;
@@ -159,7 +159,7 @@ html {
 .blur-image {
     width: 100%;
     height: 100%;
-    filter: blur(8px); 
+    filter: blur(8px);
     margin: 0%;
 }
 
@@ -279,5 +279,6 @@ form{
 
 
     </style>
+    <script src="app.js"></script>
 </body>
 </html>

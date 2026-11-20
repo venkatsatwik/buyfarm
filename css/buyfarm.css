@@ -125,12 +125,19 @@ dialog::backdrop { background:rgba(20,40,28,.5);backdrop-filter:blur(4px); }
 .order-card { display:grid;grid-template-columns:1fr auto;align-items:center;margin-bottom:12px; }
 .order-status { color:var(--green-700);background:var(--green-100);border-radius:999px;padding:8px 12px;font-weight:800; }
 
-.address-layout { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr); gap:24px; align-items:start; }
-.address-layout .form-card { max-width:none; margin:0; }
+.address-layout { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr); gap:28px; align-items:start; margin-top:10px; padding-bottom:70px; }
+.address-page-heading { text-align:center; padding:28px 0 18px; }
+.address-page-heading .page-title { margin:8px 0 0; font-size:44px; }
+.address-layout .form-card { max-width:none; margin:0; padding:32px; gap:20px; }
+.address-layout .page-heading { margin-bottom:0; }
 .address-side { display:grid; gap:16px; }
-.address-side-card { border:1px solid var(--line); border-radius:18px; background:white; padding:20px; box-shadow:var(--shadow); }
+.address-side-card { border:1px solid var(--line); border-radius:18px; background:white; padding:22px; box-shadow:var(--shadow); }
 .address-side-card h3 { margin:0 0 12px; }
-.city-options,.saved-addresses { display:flex; flex-wrap:wrap; gap:8px; }
+.city-options,.saved-addresses { display:flex; flex-wrap:wrap; gap:10px; }
+.city-options { align-items:center; padding:14px; border:1px solid var(--line); border-radius:14px; background:#f8faf7; }
+.city-chip { min-height:38px; padding:9px 15px; }
+.address-layout .form-card label { margin-bottom:2px; }
+.address-layout .form-card input:not([type="radio"]):not([type="checkbox"]), .address-layout .form-card textarea { min-height:48px; font-size:15px; }
 .city-chip,.saved-address { border:1px solid var(--line); border-radius:999px; background:white; color:var(--ink); padding:9px 12px; font-weight:700; }
 .city-chip:hover,.saved-address:hover { background:#111713; color:white; }
 .location-button { width:100%; border:1px dashed #96a99b; border-radius:12px; background:#f7faf7; color:var(--green-900); padding:13px; font-weight:800; }

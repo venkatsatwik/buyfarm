@@ -29,6 +29,7 @@ button { cursor: pointer; }
 .main-nav a:hover { color: var(--ink); background: #f1f4ef; }
 .main-nav a.active { color: white; background: #111713; }
 .nav-actions { justify-self: end; display: flex; gap: 8px; }
+.nav-actions { align-items:center; }
 .nav-button { min-height: 42px; border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--ink); padding: 8px 14px; font-weight: 800; }
 .nav-button.primary { background: var(--green-900); color: white; border-color: var(--green-900); text-decoration: none; }
 .cart-symbol { margin-right: 5px; }

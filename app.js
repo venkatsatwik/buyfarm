@@ -63,8 +63,9 @@
 
   const signInLink=document.querySelector(".nav-button.primary");
   const session=read(keys.session,null);
-  if(signInLink&&session){
-    signInLink.textContent=session.email.split("@")[0];
+  if(signInLink){
+    signInLink.setAttribute("href","login.html?v=latest");
+    if(session)signInLink.textContent=session.email.split("@")[0];
   }
 
   document.querySelectorAll(".main-nav a").forEach(link=>{

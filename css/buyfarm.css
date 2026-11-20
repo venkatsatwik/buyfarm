@@ -25,11 +25,13 @@ button { cursor: pointer; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--green-900); text-decoration: none; font-size: 21px; font-weight: 800; }
 .brand img { width: 44px; height: 44px; object-fit: contain; }
 .main-nav { height: 100%; display: flex; align-items: center; }
-.main-nav a { height: 100%; display: flex; align-items: center; padding: 0 16px; border-bottom: 3px solid transparent; color: var(--muted); text-decoration: none; font-weight: 700; }
-.main-nav a:hover, .main-nav a.active { color: var(--green-700); border-bottom-color: var(--green-700); }
+.main-nav a { height: 42px; display: flex; align-items: center; border-radius: 999px; padding: 0 16px; color: var(--muted); text-decoration: none; font-weight: 700; transition: .2s ease; }
+.main-nav a:hover { color: var(--ink); background: #f1f4ef; }
+.main-nav a.active { color: white; background: #111713; }
 .nav-actions { justify-self: end; display: flex; gap: 8px; }
 .nav-button { min-height: 42px; border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--ink); padding: 8px 14px; font-weight: 800; }
-.nav-button.primary { background: var(--green-900); color: white; border-color: var(--green-900); }
+.nav-button.primary { background: var(--green-900); color: white; border-color: var(--green-900); text-decoration: none; }
+.cart-symbol { margin-right: 5px; }
 .count { display: inline-grid; min-width: 22px; height: 22px; place-items: center; margin-left: 5px; border-radius: 50%; background: var(--green-100); color: var(--green-700); }
 
 .hero { min-height: 520px; display: flex; align-items: center; background: linear-gradient(135deg,#edf6ef 0%,#f8faf5 55%,#eef3df 100%); }
@@ -74,7 +76,9 @@ button { cursor: pointer; }
 .product-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
 .product-card { border:1px solid var(--line); border-radius:18px; overflow:hidden; background:white; transition:.2s ease; }
 .product-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
-.product-visual { height:190px; display:grid; place-items:center; background:var(--green-100); }
+.product-visual { height:190px; display:grid; place-items:center; overflow:hidden; background:var(--green-100); }
+.product-image { width:100%; height:190px; object-fit:cover; transition:.35s ease; }
+.product-card:hover .product-image { transform:scale(1.06); }
 .product-dot { width:95px;height:95px;border-radius:50%; box-shadow:inset -12px -10px 20px rgba(0,0,0,.08); }
 .product-card[data-category="Fruits"] .product-visual { background:#fff4df; }
 .product-card[data-category="Grains"] .product-visual { background:#f4efd9; }
@@ -121,6 +125,31 @@ dialog::backdrop { background:rgba(20,40,28,.5);backdrop-filter:blur(4px); }
 .order-card { display:grid;grid-template-columns:1fr auto;align-items:center;margin-bottom:12px; }
 .order-status { color:var(--green-700);background:var(--green-100);border-radius:999px;padding:8px 12px;font-weight:800; }
 
+.address-layout { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr); gap:24px; align-items:start; }
+.address-layout .form-card { max-width:none; margin:0; }
+.address-side { display:grid; gap:16px; }
+.address-side-card { border:1px solid var(--line); border-radius:18px; background:white; padding:20px; box-shadow:var(--shadow); }
+.address-side-card h3 { margin:0 0 12px; }
+.city-options,.saved-addresses { display:flex; flex-wrap:wrap; gap:8px; }
+.city-chip,.saved-address { border:1px solid var(--line); border-radius:999px; background:white; color:var(--ink); padding:9px 12px; font-weight:700; }
+.city-chip:hover,.saved-address:hover { background:#111713; color:white; }
+.location-button { width:100%; border:1px dashed #96a99b; border-radius:12px; background:#f7faf7; color:var(--green-900); padding:13px; font-weight:800; }
+.delivery-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.delivery-option { border:1px solid var(--line); border-radius:12px; background:white; padding:12px; }
+.delivery-option input { width:auto; margin-right:8px; }
+.save-row { display:flex; align-items:center; gap:8px; }
+.save-row input { width:auto; }
+.city-chip,.saved-address,.location-button { transition:.22s ease; }
+.city-chip:active,.saved-address:active { transform:scale(.96); }
+.address-side-card { animation:addressRise .45s ease both; }
+@keyframes addressRise { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+.login-back { display:inline-flex; align-items:center; gap:7px; margin-bottom:14px; color:var(--ink); text-decoration:none; font-weight:800; }
+.login-wrap { max-width:520px; margin:0 auto; }
+.login-success { opacity:.45; filter:saturate(.35); transition:.35s ease; }
+.signin-success { text-align:center; border:1px solid var(--line); border-radius:18px; background:white; padding:32px; box-shadow:var(--shadow); }
+.signin-success[hidden] { display:none; }
+.cart-thumb img { width:58px;height:58px;border-radius:12px;object-fit:cover; }
+
 @media (max-width:900px) {
   .hero-grid { grid-template-columns:1fr .8fr; }
   .trust-strip { grid-template-columns:1fr 1fr; }
@@ -134,9 +163,8 @@ dialog::backdrop { background:rgba(20,40,28,.5);backdrop-filter:blur(4px); }
   .site-header { height:auto;min-height:68px; }
   .nav { min-height:68px;grid-template-columns:1fr auto; }
   .main-nav { position:fixed;left:0;right:0;bottom:0;height:62px;justify-content:center;background:white;border-top:1px solid var(--line);z-index:40; }
-  .main-nav a { flex:1;justify-content:center;height:62px;border-bottom:0;border-top:3px solid transparent;padding:0 6px;font-size:13px; }
-  .main-nav a.active { border-top-color:var(--green-700); }
-  .nav-button.primary { display:none; }
+  .main-nav a { flex:1;justify-content:center;height:42px;margin:10px 4px;border:0;border-radius:999px;padding:0 6px;font-size:13px; }
+  .main-nav a.active { background:#111713;color:white;border:0; }
   .hero { min-height:700px;align-items:flex-start;padding-top:58px; }
   .hero-grid { grid-template-columns:1fr; }
   .hero h1 { font-size:48px;letter-spacing:-2px; }
@@ -152,4 +180,7 @@ dialog::backdrop { background:rgba(20,40,28,.5);backdrop-filter:blur(4px); }
   .form-grid { grid-template-columns:1fr; }
   .span-two { grid-column:auto; }
   .drawer { padding-bottom:62px; }
+  .address-layout { grid-template-columns:1fr; }
+  .address-layout .page-heading { text-align:center; }
+  .delivery-options { grid-template-columns:1fr; }
 }

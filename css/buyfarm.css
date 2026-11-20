@@ -119,6 +119,9 @@ dialog::backdrop { background:rgba(20,40,28,.5);backdrop-filter:blur(4px); }
 
 .form-card,.orders-list { max-width:760px;margin:0 auto; }
 .form-card { display:grid;gap:16px;padding:24px;border:1px solid var(--line);border-radius:18px;background:white;box-shadow:var(--shadow); }
+.contact-card { max-width:620px; padding:32px; border-radius:24px; background:linear-gradient(180deg,#ffffff,#fbfdfb); }
+.contact-card input,.contact-card textarea { min-height:48px; border:1.5px solid #dfe7e1; transition:.2s ease; }
+.contact-card input:focus,.contact-card textarea:focus { outline:none; border-color:var(--green-700); box-shadow:0 0 0 4px rgba(45,122,75,.10); }
 .form-card label { display:grid;gap:7px;font-weight:700; }
 .form-card input,.form-card textarea,.form-card select { width:100%;border:1px solid var(--line);border-radius:9px;padding:12px; }
 .order-card,.empty-state { border:1px solid var(--line);border-radius:16px;background:white;padding:20px; }
@@ -130,22 +133,79 @@ dialog::backdrop { background:rgba(20,40,28,.5);backdrop-filter:blur(4px); }
 .address-page-heading .page-title { margin:8px 0 0; font-size:44px; }
 .address-layout .form-card { max-width:none; margin:0; padding:32px; gap:20px; }
 .address-layout .page-heading { margin-bottom:0; }
+
+.address-layout {
+  position: relative;
+}
+
+.address-layout::before {
+  content:"";
+  position:absolute;
+  left:-40px;
+  top:-40px;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(102,168,115,.08);
+  z-index:-1;
+}
+
+.address-layout .form-card {
+  border-width:1px;
+  border-radius:24px;
+  background:linear-gradient(180deg,#ffffff 0%,#fbfdfb 100%);
+  box-shadow:0 24px 60px rgba(31,73,45,.10);
+}
+
+.address-layout .form-card label {
+  color:#26372d;
+}
+
+.address-layout .form-card input,
+.address-layout .form-card textarea {
+  background:#fbfcfa;
+  border:1.5px solid #dfe7e1;
+  transition:border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.address-layout .form-card input:focus,
+.address-layout .form-card textarea:focus {
+  outline:none;
+  border-color:var(--green-700);
+  background:white;
+  box-shadow:0 0 0 4px rgba(45,122,75,.10);
+}
 .address-side { display:grid; gap:16px; }
-.address-side-card { border:1px solid var(--line); border-radius:18px; background:white; padding:22px; box-shadow:var(--shadow); }
+.address-side-card { border:1px solid var(--line); border-radius:18px; background:linear-gradient(180deg,#ffffff,#fafcf9); padding:22px; box-shadow:var(--shadow); }
+.address-side-card h3 { color:var(--green-900); font-family:Georgia,serif; font-size:20px; }
 .address-side-card h3 { margin:0 0 12px; }
 .city-options,.saved-addresses { display:flex; flex-wrap:wrap; gap:10px; }
 .city-options { align-items:center; padding:14px; border:1px solid var(--line); border-radius:14px; background:#f8faf7; }
+.city-options .eyebrow { margin-bottom:2px; }
 .city-chip { min-height:38px; padding:9px 15px; }
+.city-chip.active,
+.city-chip:hover {
+  background:#111713;
+  color:white;
+  border-color:#111713;
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(17,23,19,.12);
+}
 .address-layout .form-card label { margin-bottom:2px; }
 .address-layout .form-card input:not([type="radio"]):not([type="checkbox"]), .address-layout .form-card textarea { min-height:48px; font-size:15px; }
 .city-chip,.saved-address { border:1px solid var(--line); border-radius:999px; background:white; color:var(--ink); padding:9px 12px; font-weight:700; }
 .city-chip:hover,.saved-address:hover { background:#111713; color:white; }
 .location-button { width:100%; border:1px dashed #96a99b; border-radius:12px; background:#f7faf7; color:var(--green-900); padding:13px; font-weight:800; }
+.location-button:hover { border-style:solid; background:var(--green-100); transform:translateY(-1px); }
+.saved-addresses { display:flex; flex-direction:column; align-items:stretch; }
+.saved-address { width:100%; border-radius:10px; text-align:left; }
 .delivery-options { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.delivery-option { border:1px solid var(--line); border-radius:12px; background:white; padding:12px; }
+.delivery-option { border:1.5px solid var(--line); border-radius:12px; background:#fbfcfa; padding:14px; transition:.2s ease; cursor:pointer; }
+.delivery-option:hover { border-color:#9fb4a4; background:white; transform:translateY(-1px); }
 .delivery-option input { width:auto; margin-right:8px; }
-.save-row { display:flex; align-items:center; gap:8px; }
+.save-row { display:flex; align-items:center; gap:10px; padding:12px 14px; border:1px solid var(--line); border-radius:12px; background:#f8faf7; }
 .save-row input { width:auto; }
+.address-layout .button.primary { min-height:52px; font-size:16px; border-radius:12px; }
 .city-chip,.saved-address,.location-button { transition:.22s ease; }
 .city-chip:active,.saved-address:active { transform:scale(.96); }
 .address-side-card { animation:addressRise .45s ease both; }

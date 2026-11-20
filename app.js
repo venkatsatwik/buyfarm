@@ -191,6 +191,8 @@
     }
     document.querySelectorAll("[data-city]").forEach(button=>{
       button.addEventListener("click",()=>{
+        document.querySelectorAll("[data-city]").forEach(chip=>chip.classList.remove("active"));
+        button.classList.add("active");
         const address=deliveryForm.querySelector('[name="address"]');
         if(address)address.value=`${button.dataset.city}, `;
         address?.focus();

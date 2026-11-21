@@ -307,7 +307,7 @@ async function route(req, res) {
     if (path === "/api/orders" && method === "POST") {
       const input = await body(req);
       const payment = String(input.payment || "");
-      const methods = new Set(["Credit/Debit Card","UPI","Net Banking","Cash on Delivery"]);
+      const methods = new Set(["Cash on Delivery"]);
       if (!methods.has(payment)) return send(res, 400, { error: "Choose a payment method." });
       if (!validAddress(input.delivery)) return send(res, 400, { error: "Add valid delivery details before placing your order." });
       if (!Array.isArray(input.items) || !input.items.length || input.items.length > 50) return send(res, 400, { error: "Your cart is empty." });

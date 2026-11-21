@@ -30,7 +30,7 @@ vercel.json          Vercel static output configuration
 
 Customer accounts, password hashes, sessions, saved addresses, wishlists, orders, and contact messages are stored in a persistent local SQLite database during development, or PostgreSQL when `DATABASE_URL` is set. Passwords are hashed with Node's `scrypt`; the plain password is never stored in the browser or database. A random session token is stored in an `HttpOnly`, `SameSite=Lax` cookie, while only its hash is stored in the database. The cart remains on the current device in local storage.
 
-Payment choices and order placement are still a storefront demo. The site does not collect card or UPI details or process a payment.
+Orders currently accept cash on delivery only. The order is saved to the customer's history and the owner dashboard; no card or UPI details are collected or processed.
 
 ## Receiving and managing orders
 

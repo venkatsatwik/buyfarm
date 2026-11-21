@@ -66,13 +66,16 @@ async function request(method, url, input = {}, cookie = "", extraHeaders = {}) 
     sentEmail = { headers:options.headers, body:JSON.parse(options.body) };
     return new Response("{}", {status:200});
   };
-  const placed = await request("POST", "/api/orders", { payment:"UPI", delivery:{name:"Asha Farmer",phone:"9876543210",address:"12 Farm Road, Pune",pincode:"411001"}, items:[{id:3,quantity:2},{id:1,quantity:1}] }, cookie);
+  const rejectedOnlinePayment = await request("POST", "/api/orders", { payment:"UPI", delivery:{name:"Asha Farmer",phone:"9876543210",address:"12 Farm Road, Pune",pincode:"411001"}, items:[{id:3,quantity:1}] }, cookie);
+  assert.equal(rejectedOnlinePayment.status, 400);
+  const placed = await request("POST", "/api/orders", { payment:"Cash on Delivery", delivery:{name:"Asha Farmer",phone:"9876543210",address:"12 Farm Road, Pune",pincode:"411001"}, items:[{id:3,quantity:2},{id:1,quantity:1}] }, cookie);
   global.fetch = originalFetch;
   assert.equal(placed.status, 201);
   assert.equal(placed.data.order.total, 370);
   assert.equal(sentEmail.body.to[0], "asha@example.com");
   assert.match(sentEmail.headers.Authorization, /^Bearer test_resend_key$/);
   assert.match(sentEmail.body.html, /Asha Farmer/);
+  assert.match(sentEmail.body.html, /Cash on Delivery/);
   assert.doesNotMatch(sentEmail.body.html, /9876543210|12 Farm Road/);
   assert.equal((await request("GET", "/api/orders", {}, cookie)).data.orders.length, 1);
   assert.equal((await request("POST", "/api/orders", { payment:"UPI", delivery:{}, items:[{id:3,quantity:1}] }, cookie)).status, 400);
@@ -80,6 +83,7 @@ async function request(method, url, input = {}, cookie = "", extraHeaders = {}) 
   const adminOrders=await request("GET","/api/admin/orders",{},cookie,ownerHeaders);
   assert.equal(adminOrders.status,200);
   assert.equal(adminOrders.data.orders.length,1);
+  assert.equal(adminOrders.data.orders[0].payment_method,"Cash on Delivery");
   assert.equal(adminOrders.data.orders[0].delivery.phone,"9876543210");
   assert.equal(adminOrders.data.emailAlertsConfigured,true);
   const changed=await request("PATCH",`/api/admin/orders/${placed.data.order.id}`,{status:"Confirmed"},cookie,ownerHeaders);
@@ -94,7 +98,7 @@ async function request(method, url, input = {}, cookie = "", extraHeaders = {}) 
   global.fetch = async () => new Response("email provider unavailable", {status:503});
   const originalWarn=console.warn;
   console.warn=()=>{};
-  const savedWithoutEmail=await request("POST","/api/orders",{payment:"UPI",delivery:{name:"Asha Farmer",phone:"9876543210",address:"12 Farm Road, Pune",pincode:"411001"},items:[{id:9,quantity:1}]},cookie);
+  const savedWithoutEmail=await request("POST","/api/orders",{payment:"Cash on Delivery",delivery:{name:"Asha Farmer",phone:"9876543210",address:"12 Farm Road, Pune",pincode:"411001"},items:[{id:9,quantity:1}]},cookie);
   console.warn=originalWarn;
   global.fetch=originalFetch;
   assert.equal(savedWithoutEmail.status,201);

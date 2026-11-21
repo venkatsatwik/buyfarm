@@ -1,0 +1,17 @@
+{
+  "name": "buyfarm-storefront",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BuyFarm storefront with persistent accounts and orders",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node tests/api-smoke.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
+}

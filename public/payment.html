@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BuyFarm | Payment</title><link rel="stylesheet" href="css/buyfarm.css?v=latest"></head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html"><img src="assets/logo.svg" alt="BuyFarm"><span>BuyFarm</span></a><nav class="main-nav"><a href="index.html">Home</a><a href="products.html">Products</a><a class="active" href="buyonline.html">Order</a><a href="contactus.html">Contact</a></nav><div class="nav-actions"><button class="nav-button" id="cartButton" type="button">Cart <span class="count" id="cartCount">0</span></button><a class="nav-button primary" href="login.html?v=latest">Sign in</a></div></div></header>
+<main class="container payment-page"><section class="page-heading"><span class="eyebrow">Last step</span><h1 class="page-title">Choose how to pay</h1><p>Your order is saved to your account as soon as you place it.</p></section>
+<div class="payment-layout"><section class="checkout-summary" id="checkoutSummary"><span class="eyebrow">Your basket</span><h2>Order summary</h2><div id="checkoutLineItems"></div><div class="checkout-total"><span>Total</span><strong id="checkoutGrandTotal">₹0</strong></div><p class="payment-demo-note">Payment is in demo mode. No card or UPI payment will be processed.</p></section>
+<form class="form-card" id="paymentForm">
+  <span class="eyebrow">Payment preference</span>
+  <label class="payment-choice"><input type="radio" name="payment" value="UPI" required><span class="payment-choice-icon">◈</span><span><strong>UPI</strong><small>PhonePe, Google Pay, or other UPI apps</small></span></label>
+  <label class="payment-choice"><input type="radio" name="payment" value="Credit/Debit Card"><span class="payment-choice-icon">▣</span><span><strong>Credit or debit card</strong><small>Visa, Mastercard, RuPay</small></span></label>
+  <label class="payment-choice"><input type="radio" name="payment" value="Net Banking"><span class="payment-choice-icon">▤</span><span><strong>Net banking</strong><small>Pay through your bank</small></span></label>
+  <label class="payment-choice"><input type="radio" name="payment" value="Cash on Delivery"><span class="payment-choice-icon">₹</span><span><strong>Cash on delivery</strong><small>Pay when your order arrives</small></span></label>
+  <button class="button primary auth-submit" type="submit"><span>Place my order</span><span>→</span></button>
+</form></div></main>
+<footer class="site-footer"><div class="container"><span>© 2026 BuyFarm · Fresh from local farms</span><nav aria-label="Footer"><a href="products.html">Shop</a><a href="orders.html">My orders</a><a href="wishlist.html">Wishlist</a><a href="account.html">My account</a><a href="contactus.html">Contact</a></nav></div></footer>
+<aside class="drawer-backdrop" id="cartBackdrop" hidden><div class="drawer"><div class="drawer-header"><h2>Your cart</h2><button class="close-button" type="button" data-close-cart>×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-footer"><div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div><button class="button primary full" id="checkoutButton" type="button">Continue to checkout</button></div></div></aside>
+<div id="buyfarm-toast" class="toast" role="status"></div><script src="app.js?v=latest"></script></body></html>

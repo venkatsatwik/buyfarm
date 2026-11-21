@@ -1,0 +1,8 @@
+node_modules/
+.pnpm-store/
+.data/
+.env
+.env.*
+!.env.example
+.vercel/
+npm-debug.log*

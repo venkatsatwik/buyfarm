@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f3">
+  <title>BuyFarm | Owner orders</title>
+  <link rel="stylesheet" href="css/buyfarm.css?v=latest">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>BuyFarm</span></a>
+      <nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="products.html">Products</a><a href="orders.html">My orders</a><a href="contactus.html">Contact</a></nav>
+      <div class="nav-actions"><a class="nav-button" href="account.html">My account</a><a class="nav-button primary" href="login.html">Sign in</a></div>
+    </div>
+  </header>
+  <main class="container owner-page">
+    <section class="owner-hero">
+      <div><span class="eyebrow">BuyFarm management</span><h1 class="page-title">Your orders, at a glance.</h1><p>Review incoming baskets, check delivery details, and keep customers up to date.</p></div>
+      <span class="owner-hero-art" aria-hidden="true">🌿</span>
+    </section>
+    <section class="owner-gate" id="ownerGate" aria-labelledby="ownerGateTitle">
+      <span class="owner-lock" aria-hidden="true">🔐</span>
+      <div><h2 id="ownerGateTitle">Owner access</h2><p id="ownerGateMessage">Enter the private owner access key from your local <code>.env</code> setup. It will stay only in this browser tab.</p></div>
+      <form id="ownerKeyForm" class="owner-key-form"><label for="ownerKey">Owner access key</label><div><input id="ownerKey" name="key" type="password" autocomplete="off" required minlength="32" placeholder="Paste your owner key"><button class="button primary" type="submit">Unlock dashboard <span aria-hidden="true">→</span></button></div><small id="ownerGateError" role="status" aria-live="polite"></small></form>
+    </section>
+    <section id="ownerDashboard" hidden>
+      <div class="owner-metrics" aria-live="polite">
+        <article class="owner-metric"><span>Recent orders</span><strong id="ownerOrderCount">—</strong><small>Latest 250 orders</small></article>
+        <article class="owner-metric"><span>Needs attention</span><strong id="ownerPendingCount">—</strong><small>Placed or confirmed</small></article>
+        <article class="owner-metric"><span>Order value</span><strong id="ownerOrderValue">—</strong><small>Order totals, not payment settlements</small></article>
+      </div>
+      <div class="owner-alert" id="ownerEmailNotice" role="status"><span aria-hidden="true">✉</span><p></p></div>
+      <section class="owner-orders-panel" aria-labelledby="ownerOrdersTitle">
+        <div class="owner-list-heading"><div><span class="eyebrow">Order desk</span><h2 id="ownerOrdersTitle">Customer orders</h2><p>Delivery details are visible only to the configured owner.</p></div><button type="button" class="button secondary" id="refreshOwnerOrders">↻ Refresh</button></div>
+        <div class="owner-filters"><label class="owner-search">Search orders<input id="ownerSearch" type="search" placeholder="Name, email, product, order ID"></label><label>Status<select id="ownerStatusFilter"><option value="all">All statuses</option></select></label></div>
+        <div class="owner-order-list" id="ownerOrderList" aria-live="polite"><div class="owner-loading"><span aria-hidden="true">🌱</span><p>Loading your orders…</p></div></div>
+      </section>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container"><span>© 2026 BuyFarm · Fresh from local farms</span><nav aria-label="Footer"><a href="products.html">Shop</a><a href="account.html">My account</a><a href="contactus.html">Contact</a></nav></div></footer>
+  <div id="buyfarm-toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js?v=latest"></script>
+  <script src="admin.js?v=latest"></script>
+</body>
+</html>

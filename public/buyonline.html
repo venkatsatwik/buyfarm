@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BuyFarm | Delivery</title><link rel="stylesheet" href="css/buyfarm.css?v=latest"></head>
+<body>
+<header class="site-header"><div class="container nav"><a class="brand" href="index.html"><img src="assets/logo.svg" alt="BuyFarm"><span>BuyFarm</span></a><nav class="main-nav"><a href="index.html">Home</a><a href="products.html">Products</a><a class="active" href="buyonline.html">Order</a><a href="contactus.html">Contact</a></nav><div class="nav-actions"><button class="nav-button" id="cartButton" type="button">Cart <span class="count" id="cartCount">0</span></button><a class="nav-button primary" href="login.html?v=latest">Sign in</a></div></div></header>
+<main class="container">
+  <section class="page-heading address-page-heading"><span class="eyebrow">Delivery details</span><h1 class="page-title">Where should we deliver?</h1></section>
+  <div class="address-layout">
+    <form class="form-card" id="deliveryForm">
+      <div class="city-options" aria-label="Popular cities"><span class="eyebrow" style="width:100%">Popular cities</span><button class="city-chip" type="button" data-city="Hyderabad">Hyderabad</button><button class="city-chip" type="button" data-city="Bengaluru">Bengaluru</button><button class="city-chip" type="button" data-city="Mumbai">Mumbai</button><button class="city-chip" type="button" data-city="Delhi">Delhi</button><button class="city-chip" type="button" data-city="Chennai">Chennai</button></div>
+      <label>Full name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+      <label>Mobile number<input name="phone" type="tel" required inputmode="numeric" pattern="[0-9]{10}" placeholder="10-digit mobile number"></label>
+      <label>Delivery address<textarea name="address" required rows="4" placeholder="House number, street, area, city"></textarea></label>
+      <label>Pincode<input name="pincode" inputmode="numeric" pattern="[0-9]{6}" required placeholder="6-digit pincode"></label>
+      <div class="delivery-options"><label class="delivery-option"><input type="radio" name="speed" value="Standard" checked> Standard delivery</label><label class="delivery-option"><input type="radio" name="speed" value="Express"> Express delivery</label></div>
+      <label class="save-row"><input type="checkbox" name="saveAddress" checked> Save this address for next time</label>
+      <button class="button primary" type="submit">Continue to payment</button>
+    </form>
+    <aside class="address-side">
+      <div class="address-side-card"><h3>Use your location</h3><button class="location-button" id="locationButton" type="button">📍 Use my current location</button><p id="locationStatus" class="product-category"></p></div>
+      <div class="address-side-card"><h3>Saved addresses</h3><div class="saved-addresses" id="savedAddresses"><p class="muted">Your saved addresses will appear here.</p></div></div>
+      <div class="address-side-card"><h3>Delivery estimate</h3><p>Standard: 24-48 hours</p><p>Express: same or next day in supported areas</p></div>
+    </aside>
+  </div>
+</main>
+<footer class="site-footer"><div class="container"><span>© 2026 BuyFarm · Fresh from local farms</span><nav aria-label="Footer"><a href="products.html">Shop</a><a href="orders.html">My orders</a><a href="wishlist.html">Wishlist</a><a href="account.html">My account</a><a href="contactus.html">Contact</a></nav></div></footer>
+<aside class="drawer-backdrop" id="cartBackdrop" hidden><div class="drawer"><div class="drawer-header"><h2>Your cart</h2><button class="close-button" type="button" data-close-cart>×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-footer"><div class="cart-total"><span>Total</span><strong id="cartTotal">₹0</strong></div><button class="button primary full" id="checkoutButton" type="button">Continue to checkout</button></div></div></aside>
+<div id="buyfarm-toast" class="toast" role="status"></div><script src="app.js?v=latest"></script></body></html>

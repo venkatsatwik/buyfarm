@@ -27,7 +27,11 @@
     return node;
   }
   async function adminRequest(url, options={}) {
-    const response = await fetch(url, {
+    const requestedUrl = new URL(url, location.origin);
+    const functionUrl = new URL("/api/handler", location.origin);
+    functionUrl.searchParams.set("__path", requestedUrl.pathname);
+    requestedUrl.searchParams.forEach((value,key) => functionUrl.searchParams.append(key,value));
+    const response = await fetch(functionUrl, {
       credentials:"same-origin",
       ...options,
       headers:{"Content-Type":"application/json","X-BuyFarm-Admin-Key":ownerKey,...(options.headers||{})}

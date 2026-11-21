@@ -33,6 +33,11 @@ async function request(method, url, input = {}, cookie = "", extraHeaders = {}) 
   const health=await request("GET","/api/health");
   assert.equal(health.status,200);
   assert.equal(health.data.ok,true);
+  const routedHealth=await request("GET","/api/handler?__path=%2Fapi%2Fhealth");
+  assert.equal(routedHealth.status,200);
+  assert.equal(routedHealth.data.database,"local SQLite");
+  const routedUnauthenticated=await request("GET","/api/handler?__path=%2Fapi%2Fauth%2Fme");
+  assert.equal(routedUnauthenticated.status,401);
   const created = await request("POST", "/api/auth/register", { name:"Asha Farmer", email:"asha@example.com", password:"FreshFarm#2026" });
   assert.equal(created.status, 201);
   assert.equal(created.data.user.password_hash, undefined);
@@ -42,6 +47,9 @@ async function request(method, url, input = {}, cookie = "", extraHeaders = {}) 
   assert.equal((await request("POST", "/api/auth/register", { name:"Asha Farmer", email:"ASHA@example.com", password:"FreshFarm#2026" })).status, 409);
   const account = await request("GET", "/api/auth/me", {}, cookie);
   assert.equal(account.data.user.email, "asha@example.com");
+  const routedAccount=await request("GET","/api/handler?__path=%2Fapi%2Fauth%2Fme",{},cookie);
+  assert.equal(routedAccount.status,200);
+  assert.equal(routedAccount.data.user.email,"asha@example.com");
   const persistedCheck=spawnSync(process.execPath,["-e",`const h=require('./api/handler');const req={method:'GET',url:'/api/auth/me',headers:{cookie:process.env.SMOKE_COOKIE},async *[Symbol.asyncIterator](){}};const res={statusCode:200,headers:{},setHeader(k,v){this.headers[k]=v},end(b){this.body=b}};h(req,res).then(()=>process.stdout.write(res.body));`],{cwd:path.resolve(__dirname,".."),encoding:"utf8",env:{...process.env,SMOKE_COOKIE:cookie}});
   assert.equal(persistedCheck.status,0,persistedCheck.stderr);
   assert.equal(JSON.parse(persistedCheck.stdout).user.email,"asha@example.com");
@@ -80,13 +88,13 @@ async function request(method, url, input = {}, cookie = "", extraHeaders = {}) 
   assert.equal((await request("GET", "/api/orders", {}, cookie)).data.orders.length, 1);
   assert.equal((await request("POST", "/api/orders", { payment:"UPI", delivery:{}, items:[{id:3,quantity:1}] }, cookie)).status, 400);
   const ownerHeaders={"x-buyfarm-admin-key":process.env.BUYFARM_ADMIN_KEY};
-  const adminOrders=await request("GET","/api/admin/orders",{},cookie,ownerHeaders);
+  const adminOrders=await request("GET","/api/handler?__path=%2Fapi%2Fadmin%2Forders",{},cookie,ownerHeaders);
   assert.equal(adminOrders.status,200);
   assert.equal(adminOrders.data.orders.length,1);
   assert.equal(adminOrders.data.orders[0].payment_method,"Cash on Delivery");
   assert.equal(adminOrders.data.orders[0].delivery.phone,"9876543210");
   assert.equal(adminOrders.data.emailAlertsConfigured,true);
-  const changed=await request("PATCH",`/api/admin/orders/${placed.data.order.id}`,{status:"Confirmed"},cookie,ownerHeaders);
+  const changed=await request("PATCH",`/api/handler?__path=${encodeURIComponent(`/api/admin/orders/${placed.data.order.id}`)}`,{status:"Confirmed"},cookie,ownerHeaders);
   assert.equal(changed.status,200);
   assert.equal(changed.data.order.status,"Confirmed");
   assert.equal((await request("PATCH",`/api/admin/orders/${placed.data.order.id}`,{status:"Hacked"},cookie,ownerHeaders)).status,400);

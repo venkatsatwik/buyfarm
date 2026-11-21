@@ -33,7 +33,10 @@
   const saveCart=value=>write(keys.cart,value);
   const money=value=>`₹${Number(value).toLocaleString("en-IN")}`;
   const api=async(path,options={})=>{
-    const response=await fetch(path,{credentials:"same-origin",...options,headers:{"Content-Type":"application/json",...(options.headers||{})}});
+    const requestedUrl=new URL(path,location.origin),functionUrl=new URL("/api/handler",location.origin);
+    functionUrl.searchParams.set("__path",requestedUrl.pathname);
+    requestedUrl.searchParams.forEach((value,key)=>functionUrl.searchParams.append(key,value));
+    const response=await fetch(functionUrl,{credentials:"same-origin",...options,headers:{"Content-Type":"application/json",...(options.headers||{})}});
     const result=await response.json().catch(()=>({}));
     if(!response.ok){const error=new Error(result.error||"Something went wrong. Please try again.");error.status=response.status;throw error;}
     return result;

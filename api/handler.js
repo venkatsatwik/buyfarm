@@ -174,7 +174,11 @@ function validAddress(input) {
 
 async function route(req, res) {
   const url = parsePath(req);
-  const path = url.pathname.replace(/\/$/, "") || "/";
+  const routedPath = url.pathname === "/api/handler" ? url.searchParams.get("__path") : null;
+  const requestPath = typeof routedPath === "string" && routedPath.startsWith("/api/")
+    ? new URL(routedPath, "http://buyfarm.local").pathname
+    : url.pathname;
+  const path = requestPath.replace(/\/$/, "") || "/";
   const method = req.method || "GET";
   if (method === "OPTIONS") { res.statusCode = 204; res.end(); return; }
   try {
